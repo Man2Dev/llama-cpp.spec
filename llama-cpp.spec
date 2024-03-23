@@ -25,7 +25,7 @@ Name:           llama-cpp
 
 License:        MIT AND Apache-2.0 AND LicenseRef-Fedora-Public-Domain
 Version:        b2417
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 URL:            https://github.com/ggerganov/llama.cpp
 Source0:        %{url}/archive/%{version}.tar.gz#/llama.cpp-%{version}.tar.gz
@@ -157,14 +157,14 @@ cd -
 
 rm -rf %{buildroot}%{_libdir}/libggml_shared.*
 
-%if %{without examples}
-rm -rf %{buildroot}%{_bindir}/*
-%else
+%if %{with examples}
 mkdir -p %{buildroot}%{_datarootdir}/%{name}
 cp -r %{_vpath_srcdir}/examples %{buildroot}%{_datarootdir}/%{name}/
 cp -r %{_vpath_srcdir}/models %{buildroot}%{_datarootdir}/%{name}/
 cp -r %{_vpath_srcdir}/README.md %{buildroot}%{_datarootdir}/%{name}/
 rm -rf %{buildroot}%{_datarootdir}/%{name}/examples/llama.android
+%else
+rm %{buildroot}%{_bindir}/convert*.py
 %endif
 
 %if %{with test}
@@ -177,14 +177,14 @@ rm -rf %{buildroot}%{_datarootdir}/%{name}/examples/llama.android
 %{_libdir}/libllama.so.%{version}
 
 %files devel
+%dir %{_libdir}/cmake/Llama
 %doc README.md
 %{_includedir}/ggml.h
 %{_includedir}/ggml-alloc.h
 %{_includedir}/ggml-backend.h
 %{_includedir}/llama.h
 %{_libdir}/libllama.so
-%{_libdir}/cmake/Llama/LlamaConfig.cmake
-%{_libdir}/cmake/Llama/LlamaConfigVersion.cmake
+%{_libdir}/cmake/Llama/*.cmake
 
 %if %{with test}
 %files test
@@ -249,6 +249,9 @@ rm -rf %{buildroot}%{_datarootdir}/%{name}/examples/llama.android
 %endif
 
 %changelog
+* Sat Mar 23 2024 Tom Rix <trix@redhat.com> - b2417-2
+- Fix test subpackage
+
 * Thu Mar 14 2024 Tom Rix <trix@redhat.com> - b2417-1
 - Update to b2417
 
