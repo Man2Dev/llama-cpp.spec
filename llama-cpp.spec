@@ -1,6 +1,6 @@
 # For the extra python package gguf that comes with llama-cpp
 %global pypi_name gguf
-%global pypi_version 0.7.0
+%global pypi_version 0.9.0
 
 # Some optional subpackages
 %bcond_with examples
@@ -24,8 +24,8 @@ Name:           llama-cpp
 # This is the main license
 
 License:        MIT AND Apache-2.0 AND LicenseRef-Fedora-Public-Domain
-Version:        b2417
-Release:        2%{?dist}
+Version:        b2619
+Release:        1%{?dist}
 
 URL:            https://github.com/ggerganov/llama.cpp
 Source0:        %{url}/archive/%{version}.tar.gz#/llama.cpp-%{version}.tar.gz
@@ -249,6 +249,9 @@ rm %{buildroot}%{_bindir}/convert*.py
 %endif
 
 %changelog
+* Thu Apr 11 2024 Tomas Tomecek <ttomecek@redhat.com> - b2619-1
+- Update to b2619 (required by llama-cpp-python-0.2.60)
+
 * Sat Mar 23 2024 Tom Rix <trix@redhat.com> - b2417-2
 - Fix test subpackage
 
