@@ -42,6 +42,7 @@ BuildRequires:  python3dist(pip)
 BuildRequires:  python3dist(poetry)
 
 Requires:       cmake-filesystem
+Requires:       numactl
 %endif
 
 %description
