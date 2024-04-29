@@ -251,6 +251,9 @@ rm %{buildroot}%{_bindir}/convert*.py
 %endif
 
 %changelog
+* Mon Apr 29 2024 Mohammadreza Hendiani <Man2Dev@proton.me> - b2619-2
+- Update to b2619 (added dependency for build and numa)
+
 * Thu Apr 11 2024 Tomas Tomecek <ttomecek@redhat.com> - b2619-1
 - Update to b2619 (required by llama-cpp-python-0.2.60)
 
