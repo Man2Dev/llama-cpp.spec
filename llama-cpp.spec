@@ -34,6 +34,7 @@ ExclusiveArch:  x86_64 aarch64
 %global toolchain gcc
 
 BuildRequires:  cmake
+BuildRequires:  ccache
 BuildRequires:  gcc-c++
 %if %{with examples}
 BuildRequires:  python3-devel
