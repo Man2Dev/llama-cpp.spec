@@ -251,8 +251,8 @@ rm %{buildroot}%{_bindir}/convert*.py
 %endif
 
 %changelog
-* Sun May 12 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2860-1
-- Update to b2860 (required by llama-cpp-python-0.2.74)
+* Sun May 12 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2861-1
+- Update to b2861 (required by llama-cpp-python-0.2.74)
 - Added ccache as BuildRequires
 - Added numctl as Weak dependency
 
