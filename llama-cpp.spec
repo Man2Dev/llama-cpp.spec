@@ -29,6 +29,7 @@ Release:        1%{?dist}
 
 URL:            https://github.com/ggerganov/llama.cpp
 Source0:        %{url}/archive/%{version}.tar.gz#/llama.cpp-%{version}.tar.gz
+Source1:	https://github.com/ggerganov/llama.cpp/releases/tag/%{version}
 
 ExclusiveArch:  x86_64 aarch64
 %global toolchain gcc
