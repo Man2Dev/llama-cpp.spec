@@ -25,10 +25,10 @@ Name:           llama-cpp
 
 License:        MIT AND Apache-2.0 AND LicenseRef-Fedora-Public-Domain
 Version:        b2619
-Release:        1%{?dist}
+Release:        1.20240517170819403523.main%{?dist}
 
 URL:            https://github.com/ggerganov/llama.cpp
-Source0:        %{url}/archive/%{version}.tar.gz#/llama.cpp-%{version}.tar.gz
+Source0:        llama-cpp.spec-b2619.tar.gz
 
 ExclusiveArch:  x86_64 aarch64
 %global toolchain gcc
@@ -104,7 +104,15 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 %endif
 
 %prep
+<<<<<<< HEAD
+%autosetup -p1 -n llama-cpp.spec-b2619
+=======
+#for f in %{sources} ; do
+#    echo "$f"
+#done
+# verson the *.so
 %autosetup -p1 -n llama.cpp-%{version}
+>>>>>>> parent of 1ea253d (removed comments)
 
 # verson the *.so
 sed -i -e 's/POSITION_INDEPENDENT_CODE ON/POSITION_INDEPENDENT_CODE ON SOVERSION %{version}/' CMakeLists.txt
@@ -251,6 +259,15 @@ rm %{buildroot}%{_bindir}/convert*.py
 %endif
 
 %changelog
+* Fri May 17 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2619-1.20240517170819403523.main
+- Development snapshot (4ecf6d3d)
+
+* Fri May 17 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2619-1.20240517170725118297.main
+- Development snapshot (4ecf6d3d)
+
+* Fri May 17 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2619-1.20240517170609543201.main
+- Development snapshot (4ecf6d3d)
+
 * Mon Apr 29 2024 Mohammadreza Hendiani <Man2Dev@proton.me> - b2619-2
 - Update to b2619 (added dependency for build and numa)
 
