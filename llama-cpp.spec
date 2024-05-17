@@ -29,7 +29,6 @@ Release:        1%{?dist}
 
 URL:            https://github.com/ggerganov/llama.cpp
 Source0:        %{url}/archive/%{version}.tar.gz#/llama.cpp-%{version}.tar.gz
-Source1:        llama.cpp-%{version}.tar.gz
 
 ExclusiveArch:  x86_64 aarch64
 %global toolchain gcc
@@ -255,6 +254,10 @@ rm %{buildroot}%{_bindir}/convert*.py
 %endif
 
 %changelog
+* Sun Fri 17 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2619-1
+- Update to b2619 (required by llama-cpp-python-0.2.75)
+- fixed build bugs
+
 * Sun May 12 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2861-1
 - Update to b2861 (required by llama-cpp-python-0.2.74)
 - Added ccache as BuildRequires
