@@ -9,6 +9,8 @@ sources:
 jobs:
   - job: pull_from_upstream
     trigger: release
+    targets:
+      - fedora-all
     dist_git_branches:
       - rawhide
       - fedora-all
