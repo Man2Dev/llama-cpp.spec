@@ -24,16 +24,19 @@ Name:           llama-cpp
 # This is the main license
 
 License:        MIT AND Apache-2.0 AND LicenseRef-Fedora-Public-Domain
-Version:        b2861
+Version:        b2619
 Release:        1%{?dist}
 
 URL:            https://github.com/ggerganov/llama.cpp
 Source0:        %{url}/archive/%{version}.tar.gz#/llama.cpp-%{version}.tar.gz
+Source1:        llama.cpp-%{version}.tar.gz
 
 ExclusiveArch:  x86_64 aarch64
 %global toolchain gcc
 
 BuildRequires:  cmake
+BuildRequires:  sed
+BuildRequires:  git
 BuildRequires:  ccache
 BuildRequires:  gcc-c++
 %if %{with examples}
@@ -106,7 +109,6 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 %prep
 %autosetup -p1 -n llama.cpp-%{version}
 
-# verson the *.so
 sed -i -e 's/POSITION_INDEPENDENT_CODE ON/POSITION_INDEPENDENT_CODE ON SOVERSION %{version}/' CMakeLists.txt
 
 # no android needed
@@ -127,7 +129,9 @@ cd -
 %endif
 
 %cmake \
+    -DGIT_DISCOVERY_ACROSS_FILESYSTEM=true \
     -DCMAKE_INSTALL_LIBDIR=%{_lib} \
+    -DCMAKE_INSTALL_BIBDIR=%{_bin} \
     -DLLAMA_AVX=OFF \
     -DLLAMA_AVX2=OFF \
     -DLLAMA_AVX512=OFF \
@@ -267,3 +271,4 @@ rm %{buildroot}%{_bindir}/convert*.py
 
 * Sat Dec 23 2023 Tom Rix <trix@redhat.com> - b1695-1
 - Initial package
+
