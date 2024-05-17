@@ -34,6 +34,11 @@ ExclusiveArch:  x86_64 aarch64
 %global toolchain gcc
 
 BuildRequires:  cmake
+<<<<<<< HEAD
+BuildRequires:  sed
+BuildRequires:  git
+=======
+>>>>>>> main
 BuildRequires:  ccache
 BuildRequires:  gcc-c++
 %if %{with examples}
@@ -42,7 +47,11 @@ BuildRequires:  python3dist(pip)
 BuildRequires:  python3dist(poetry)
 
 Requires:       cmake-filesystem
+<<<<<<< HEAD
+Recommends:	numactl
+=======
 Requires:       numactl
+>>>>>>> main
 %endif
 
 %description
@@ -114,7 +123,6 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 %autosetup -p1 -n llama.cpp-%{version}
 >>>>>>> parent of 1ea253d (removed comments)
 
-# verson the *.so
 sed -i -e 's/POSITION_INDEPENDENT_CODE ON/POSITION_INDEPENDENT_CODE ON SOVERSION %{version}/' CMakeLists.txt
 
 # no android needed
@@ -135,7 +143,9 @@ cd -
 %endif
 
 %cmake \
+    -DGIT_DISCOVERY_ACROSS_FILESYSTEM=true \
     -DCMAKE_INSTALL_LIBDIR=%{_lib} \
+    -DCMAKE_INSTALL_BIBDIR=%{_bin} \
     -DLLAMA_AVX=OFF \
     -DLLAMA_AVX2=OFF \
     -DLLAMA_AVX512=OFF \
@@ -259,6 +269,16 @@ rm %{buildroot}%{_bindir}/convert*.py
 %endif
 
 %changelog
+<<<<<<< HEAD
+* Sun Fri 17 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2619-1
+- Update to b2619 (required by llama-cpp-python-0.2.75)
+- fixed build bugs
+
+* Sun May 12 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2861-1
+- Update to b2861 (required by llama-cpp-python-0.2.74)
+- Added ccache as BuildRequires
+- Added numctl as Weak dependency
+=======
 * Fri May 17 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b2619-1.20240517170819403523.main
 - Development snapshot (4ecf6d3d)
 
@@ -270,6 +290,7 @@ rm %{buildroot}%{_bindir}/convert*.py
 
 * Mon Apr 29 2024 Mohammadreza Hendiani <Man2Dev@proton.me> - b2619-2
 - Update to b2619 (added dependency for build and numa)
+>>>>>>> main
 
 * Thu Apr 11 2024 Tomas Tomecek <ttomecek@redhat.com> - b2619-1
 - Update to b2619 (required by llama-cpp-python-0.2.60)
@@ -282,3 +303,4 @@ rm %{buildroot}%{_bindir}/convert*.py
 
 * Sat Dec 23 2023 Tom Rix <trix@redhat.com> - b1695-1
 - Initial package
+
