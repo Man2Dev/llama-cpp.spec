@@ -11,6 +11,7 @@ jobs:
     trigger: release
     dist_git_branches:
       - rawhide
+      - fedora-all
       - main
     actions:
       commit-message:
