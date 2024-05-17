@@ -12,6 +12,7 @@ jobs:
     dist_git_branches:
       - rawhide
       - fedora-all
+      - fedora-40
       - main
     actions:
       commit-message:
