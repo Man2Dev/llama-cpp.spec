@@ -14,6 +14,12 @@ jobs:
       - fedora-all
       - fedora-40
       - main
+    allowed_pr_authors:
+      - packit
+      - Man2Dev      
+    allowed_committers:
+      - packit
+      - trix
     actions:
       commit-message:
         - bash -c 'echo "Update to ${PACKIT_PROJECT_VERSION}"'
