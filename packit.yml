@@ -11,7 +11,7 @@ jobs:
     trigger: release
     dist_git_branches:
       - rawhide
-      - master
+      - main
     actions:
       commit-message:
         - bash -c 'echo "Update to ${PACKIT_PROJECT_VERSION}"'
