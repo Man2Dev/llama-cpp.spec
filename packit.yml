@@ -9,9 +9,25 @@ sources:
 jobs:
   - job: pull_from_upstream
     trigger: release
+<<<<<<< HEAD
     dist_git_branches:
       - rawhide
       - master
+=======
+    targets:
+      - fedora-all
+    dist_git_branches:
+      - rawhide
+      - fedora-all
+      - fedora-40
+      - main
+    allowed_pr_authors:
+      - packit
+      - Man2Dev      
+    allowed_committers:
+      - packit
+      - trix
+>>>>>>> main
     actions:
       commit-message:
         - bash -c 'echo "Update to ${PACKIT_PROJECT_VERSION}"'
