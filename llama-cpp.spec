@@ -37,6 +37,11 @@ ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cmake
 BuildRequires:  sed
 BuildRequires:  git
+BuildRequires:  xxd
+BuildRequires:  curl
+BuildRequires:  libcurl-devel
+BuildRequires:  wget
+BuildRequires:  langpacks-en
 BuildRequires:  ccache
 BuildRequires:  gcc-c++
 %if %{with examples}
@@ -130,9 +135,7 @@ cd -
 %endif
 
 %cmake \
-    -DGIT_DISCOVERY_ACROSS_FILESYSTEM=true \
     -DCMAKE_INSTALL_LIBDIR=%{_lib} \
-    -DCMAKE_INSTALL_BIBDIR=%{_bin} \
     -DLLAMA_AVX=OFF \
     -DLLAMA_AVX2=OFF \
     -DLLAMA_AVX512=OFF \
@@ -256,6 +259,10 @@ rm %{buildroot}%{_bindir}/convert*.py
 %endif
 
 %changelog
+* Sat May 18 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> -  b2879-2
+- Removed useless cmake flags
+- added dependancies based .github/workflows/server.yml (for ubuntu) in upstream
+
 * Fri May 17 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> -  b2879-1
 - Update to  b2879 (required by llama-cpp-python-0.2.75)
 - fixed build bugs
