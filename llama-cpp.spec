@@ -194,6 +194,7 @@ rm %{buildroot}%{_bindir}/convert*.py
 %{_includedir}/llama.h
 %{_libdir}/libllama.so
 %{_libdir}/cmake/Llama/*.cmake
+%{_exec_prefix}/lib/pkgconfig/llama.pc
 
 %if %{with test}
 %files test
