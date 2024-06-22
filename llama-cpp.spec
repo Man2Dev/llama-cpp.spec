@@ -259,6 +259,10 @@ rm %{buildroot}%{_bindir}/convert*.py
 %endif
 
 %changelog
+* Sat Jun 22 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> - b3184-1
+- Update to b3184 (required by llama-cpp-python-0.2.79)
+- added .pc file
+
 * Sat May 18 2024 Mohammadreza Hendiani <man2dev@fedoraproject.org> -  b2879-2
 - Removed useless cmake flags
 - added dependancies based .github/workflows/server.yml (for ubuntu) in upstream
